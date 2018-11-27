@@ -7,8 +7,6 @@ EXPOSE 21000
 WORKDIR /workspace
 VOLUME ["/workspace/logs"]
 
-ARG JAR_FILE
-COPY target/${JAR_FILE} /workspace/
+COPY target/web-test.jar /workspace/
 
-CMD java -Xmx128m -Duser.timezone=Asia/Shanghai -XX:HeapDumpPath=/workspace/logs/web-test_heap.dump -cp /workspace/resources -jar ${JAR_FILE}
-
+CMD java -Xmx128m -Duser.timezone=Asia/Shanghai -jar web-test.jar > /workspace/test.txt
